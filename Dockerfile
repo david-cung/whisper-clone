@@ -8,10 +8,12 @@ RUN apt-get update && \
 WORKDIR /Whisper-WebUI
 
 COPY requirements.txt .
+COPY constraints-docker.txt .
 
 RUN python3 -m venv venv && \
     . venv/bin/activate && \
-    pip install -U -r requirements.txt
+    pip install -U --timeout 100 --retries 10 "pip<26" "setuptools==69.5.1" "wheel" && \
+    pip install -U --timeout 100 --retries 10 --no-build-isolation -c constraints-docker.txt -r requirements.txt
 
 
 FROM debian:bookworm-slim AS runtime

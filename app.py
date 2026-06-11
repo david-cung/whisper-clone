@@ -58,7 +58,8 @@ class App:
             dd_lang = gr.Dropdown(choices=self.whisper_inf.available_langs + [AUTOMATIC_DETECTION],
                                   value=AUTOMATIC_DETECTION if whisper_params["lang"] == AUTOMATIC_DETECTION.unwrap()
                                   else whisper_params["lang"], label=_("Language"))
-            dd_file_format = gr.Dropdown(choices=["SRT", "WebVTT", "txt", "LRC"], value=whisper_params["file_format"], label=_("File Format"))
+            file_format_value = "TXT" if whisper_params["file_format"].lower() == "txt" else whisper_params["file_format"]
+            dd_file_format = gr.Dropdown(choices=["SRT", "WebVTT", "TXT", "LRC"], value=file_format_value, label=_("File Format"))
         with gr.Row():
             cb_translate = gr.Checkbox(value=whisper_params["is_translate"], label=_("Translate to English?"),
                                        interactive=True)

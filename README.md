@@ -1,3 +1,7 @@
+# whisper-clone
+
+Fork/customized setup of Whisper-WebUI.
+
 # Whisper-WebUI
 A Gradio-based browser interface for [Whisper](https://github.com/openai/whisper). You can use it as an Easy Subtitle Generator!
 

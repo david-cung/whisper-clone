@@ -1,0 +1,11 @@
+services:
+  whisper-webui:
+    # Enable this override only when Docker Desktop can see your Nvidia GPU.
+    # Example: docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml up
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
